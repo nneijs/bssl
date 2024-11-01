@@ -25,8 +25,10 @@ class AssignNode : public ASTNode {
 public:
     std::string name;
     std::unique_ptr<ASTNode> value;
-    AssignNode(const std::string& name, std::unique_ptr<ASTNode> value) 
+    
+    AssignNode(const std::string& name, std::unique_ptr<ASTNode> value)
         : name(name), value(std::move(value)) {}
+
     int evaluate() override;
 };
 
