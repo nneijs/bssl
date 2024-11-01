@@ -1,4 +1,6 @@
-// parser.cpp
+#include <unordered_map>
+#include <string>
+#include "tokenizer.cpp"
 #include "parser.h"
 #include <stdexcept>
 #include <iostream>
@@ -64,7 +66,7 @@ std::unique_ptr<ASTNode> Parser::parse() {
         std::string varName = currentToken.strValue;
         eat(TokenType::IDENTIFIER);
 
-        if (currentToken.type == TokenType::ASSIGN) {  // Variable assignment
+        if (currentToken.type == TokenType::ASSIGN) {
             eat(TokenType::ASSIGN);
             auto value = expression();
             return std::make_unique<AssignNode>(varName, std::move(value));

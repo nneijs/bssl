@@ -3,13 +3,12 @@
 #include "parser.h"
 #include "tokenizer.h"
 
-// Function to interpret a single line of code in our custom language
 void interpretLine(const std::string& line) {
     try {
         Tokenizer tokenizer(line);
         Parser parser(tokenizer);
         std::unique_ptr<ASTNode> root = parser.parse();
-        root->evaluate();  // PrintNode will handle printing if the command is "print"
+        root->evaluate();
     } catch (const std::exception& e) {
         std::cerr << "Error: " << e.what() << std::endl;
     }
@@ -17,7 +16,6 @@ void interpretLine(const std::string& line) {
 
 int main(int argc, char* argv[]) {
     if (argc > 1) {
-        // If a filename is provided, read and interpret each line from the file
         std::string filename = argv[1];
         std::ifstream file(filename);
 
@@ -32,7 +30,6 @@ int main(int argc, char* argv[]) {
         }
         file.close();
     } else {
-        // Interactive mode
         std::string input;
         while (true) {
             std::cout << "Enter an expression (or type 'exit' to quit): ";

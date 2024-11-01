@@ -2,10 +2,17 @@
 #ifndef PARSER_H
 #define PARSER_H
 
-#include "tokenizer.h"
 #include <memory>
-#include <iostream>
+#include <string>
 #include <unordered_map>
+#include <iostream>
+
+// Base class for AST nodes
+class ASTNode {
+public:
+    virtual ~ASTNode() = default;
+    virtual int evaluate() = 0;
+};
 
 class VarNode : public ASTNode {
 public:
@@ -18,15 +25,9 @@ class AssignNode : public ASTNode {
 public:
     std::string name;
     std::unique_ptr<ASTNode> value;
-    AssignNode(const std::string& name, std::unique_ptr<ASTNode> value)
+    AssignNode(const std::string& name, std::unique_ptr<ASTNode> value) 
         : name(name), value(std::move(value)) {}
     int evaluate() override;
-};
-
-class ASTNode {
-public:
-    virtual ~ASTNode() = default;
-    virtual int evaluate() = 0;
 };
 
 class NumberNode : public ASTNode {

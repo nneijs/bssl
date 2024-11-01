@@ -1,4 +1,3 @@
-// tokenizer.h
 #ifndef TOKENIZER_H
 #define TOKENIZER_H
 
@@ -22,11 +21,11 @@ enum class TokenType {
 
 struct Token {
     TokenType type;
-    int value;           // For numeric tokens
-    std::string strValue; // For string literals
+    int value;
+    std::string strValue;
 
     Token(TokenType type, int value = 0) : type(type), value(value) {}
-    Token(TokenType type, const std::string& str) : type(type), strValue(str) {} // Constructor for string tokens
+    Token(TokenType type, const std::string& str) : type(type), strValue(str) {}
 };
 
 class Tokenizer {

@@ -1,13 +1,10 @@
-// global_variable_store.cpp
-
 #include "parser.h"
 #include <unordered_map>
 #include <string>
 #include <stdexcept>
 #include <iostream>
 
-// Define the global map to store variables
-std::unordered_map<std::string, int> variables;  // Ensure this has a semicolon at the end
+std::unordered_map<std::string, int> variables;
 
 int VarNode::evaluate() {
     if (variables.find(name) != variables.end()) {

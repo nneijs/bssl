@@ -1,4 +1,3 @@
-// evaluator.cpp
 #include "parser.h"
 
 int BinOpNode::evaluate() {

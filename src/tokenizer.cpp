@@ -10,7 +10,7 @@ void Tokenizer::advance() {
     if (pos < input.length()) {
         currentChar = input[pos];
     } else {
-        currentChar = '\0';  // End of input
+        currentChar = '\0';
     }
 }
 
@@ -40,7 +40,7 @@ Token Tokenizer::getNextToken() {
             return Token(TokenType::NUMBER, integer());
         }
 
-        if (std::isalpha(currentChar)) {  // Look for keywords and identifiers
+        if (std::isalpha(currentChar)) {
             std::string word;
             while (currentChar != '\0' && std::isalnum(currentChar)) {
                 word += currentChar;
@@ -49,18 +49,18 @@ Token Tokenizer::getNextToken() {
             if (word == "print") {
                 return Token(TokenType::PRINT);
             }
-            return Token(TokenType::IDENTIFIER, 0);  // For variables
+            return Token(TokenType::IDENTIFIER, 0);
         }
 
-        if (currentChar == '"') {  // String literal handling
+        if (currentChar == '"') {
     advance();
     std::string strValue;
     while (currentChar != '"' && currentChar != '\0') {
         strValue += currentChar;
         advance();
     }
-    if (currentChar == '"') advance();  // Skip closing quote
-    return Token(TokenType::STRING, strValue);  // Use the string constructor
+    if (currentChar == '"') advance();
+    return Token(TokenType::STRING, strValue);
 }
 
 
