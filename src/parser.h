@@ -62,7 +62,7 @@ public:
 
     int evaluate() override {
         std::cout << value << std::endl;
-        return 0;
+        return 0; // StringNode's evaluate doesn't return a meaningful integer, but we use 0 here for compatibility
     }
 };
 
